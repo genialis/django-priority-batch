@@ -29,11 +29,12 @@ jobs:
     - stage: test
       env: TOX_ENV=packaging
 
-    # NOTE: We undo all the global Travis CI step definitions to ensure
+    # NOTE: We undo/change all the global Travis CI step definitions to ensure
     # building of source and wheel distributions is performed in a clean
     # environment.
     - stage: release
-      install: skip
+      # Project uses setuptools_scm to determine the version from a SCM tag.
+      install: pip install setuptools_scm
       script: skip
       # NOTE: Due to the way Travis CI currently works, setting
       # 'after_success: skip' would also result in skipping the deploy step.
