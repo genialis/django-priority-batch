@@ -1,0 +1,55 @@
+# Global Travis CI step definitions that will be used by all jobs unless
+# explicitly overriden in the jobs.include matrix.
+
+language: python
+# NOTE: Apparently, Travis CI still hasn't strealined Python 3.7 support so
+# one has to resort to using the "unofficial" Ubuntu Xenial Xerus (16.04 LTS)
+# build environment and enable the "sudo" mode.
+# More details here:
+# - https://github.com/travis-ci/travis-ci/issues/9069#issuecomment-425720905
+# - https://github.com/travis-ci/travis-ci/issues/9815
+sudo: required
+dist: xenial
+python: "3.7"
+
+install: pip install tox
+
+script: tox -e $TOX_ENV
+
+# Build stages.
+jobs:
+  include:
+    - stage: test
+      env: TOX_ENV=py36
+      python: "3.6"
+    - stage: test
+      env: TOX_ENV=py37
+    - stage: test
+      env: TOX_ENV=linters
+    - stage: test
+      env: TOX_ENV=packaging
+
+    # NOTE: We undo all the global Travis CI step definitions to ensure
+    # building of source and wheel distributions is performed in a clean
+    # environment.
+    - stage: release
+      install: skip
+      script: skip
+      # NOTE: Due to the way Travis CI currently works, setting
+      # 'after_success: skip' would also result in skipping the deploy step.
+      # A work-around is to execute a dummy echo command.
+      # More info at: https://github.com/travis-ci/travis-ci/issues/8337.
+      after_success: echo "Skipping..."
+      deploy:
+        provider: pypi
+        user: genialis-bot
+        password:
+          secure: "tqk3YtLWcXHqmDrTWxtxoefirrposUgCKPGSFfd1kFC7iOGjqKMl1fk6trRVbn9MaoeemIipkVngN8lwnu99+JB7tmJ4nSAyc/wtiFSu80PiAxrHT4FAuvKunQyaQxUNSaB3s/2a3aPBJ3svLlZ9bkXF2vm/vVIvkJuWto8zv+n9IHtwKMLcsu5hyqwjEzn3AA0IyMlcK7luHB9ZslmqIUCDuqpkC33qwKuIH9gI4aj69SJ9c9inmGgntyMDhb5n7s20FVU/XAso14mOG6wskzSwKoJaY4zWYFNDtTMK6hkgCWaRDu1dygRvx1hcb9xa6Mr+SSUk3YEs8JwZsVdjM8FCMfPd9mUgoN0jvn+v+kWOIW2pMFNvzH17s1D0mQjtVz6kR3ppawkCp4HrBBajID03SleO4HJTBxz+uxawneq0/DdP57fMLUfoKOPElDxeA3t2HjhC1DxyfLBsOjcZIYV4YJ99opLqb5SAyMO6/q8zmW2fxwv3LefAsLSV0TD2A302S390APCluPMvjqKdNq0G6h1oZAj8XD5zVQJdjPkJ6Rrxbwv6O6AmNiiI+u7aInGnafmkBwPUZKZZbnDwVvjNZQSuo2FpN3abPeJpGvsMpjL5Jynkd1n7mpHmJmyU8IrNcuCegLlOSoiJGXnCOHMwH2Co2EBbFkIxqZxoHQs="
+        distributions: sdist bdist_wheel
+        on:
+          # Enable deploying tags. By default, Travis CI only deploys from the
+          # master branch.
+          tags: true
+      # Only build releases for tags starting with a Semantic Versioning 2.0
+      # compatible version.
+      if: tag =~ ^\d+\.\d+\.\d+
