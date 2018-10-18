@@ -13,11 +13,11 @@ Django Priority Batch
     :alt: Documentation Status
 
 .. |pypi_version| image:: https://img.shields.io/pypi/v/django-priority-batch.svg
-    :target: https://pypi.python.org/pypi/django-priority-batch
+    :target: https://pypi.org/project/django-priority-batch/
     :alt: Version on PyPI
 
 .. |pypi_pyversions| image:: https://img.shields.io/pypi/pyversions/django-priority-batch.svg
-    :target: https://pypi.python.org/pypi/django-priority-batch
+    :target: https://pypi.org/project/django-priority-batch/
     :alt: Supported Python versions
 
 .. |pypi_downloads| image:: https://pepy.tech/badge/django-priority-batch
@@ -50,7 +50,7 @@ Using PyPI_
 
     pip install django-priority-batch
 
-.. _PyPi: https://pypi.python.org/
+.. _PyPi: https://pypi.org/
 
 Using source on GitHub_
 -----------------------
