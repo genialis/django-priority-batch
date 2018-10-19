@@ -5,3 +5,4 @@ recursive-include docs *.py *.rst
 # Include files needed by tests
 include tox.ini
 include pyproject.toml
+recursive-include tests *.py

@@ -23,6 +23,7 @@ setuptools.setup(
     license=about['__license__'],
     packages=setuptools.find_packages(),
     python_requires='>=3.6, <3.8',
+    install_requires=['Django~=1.11.6'],
     extras_require={
         'docs': ['Sphinx', 'sphinx_rtd_theme'],
         'package': ['twine', 'wheel'],
@@ -32,6 +33,8 @@ setuptools.setup(
             'check-manifest',
             'readme_renderer',
             'setuptools_scm',
+            'pytest',
+            'pytest-django',
         ],
     },
     classifiers=[
