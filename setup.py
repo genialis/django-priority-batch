@@ -8,7 +8,9 @@ with open('README.rst', 'r') as fh:
 # Get package metadata from '__about__.py' file.
 about = {}
 base_dir = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(base_dir, 'django_priority_batch', '__about__.py'), 'r') as fh:
+with open(
+    os.path.join(base_dir, 'src', 'django_priority_batch', '__about__.py'), 'r'
+) as fh:
     exec(fh.read(), about)
 
 setuptools.setup(
@@ -21,7 +23,8 @@ setuptools.setup(
     author_email=about['__email__'],
     url=about['__url__'],
     license=about['__license__'],
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages('src'),
+    package_dir={'': 'src'},
     python_requires='>=3.6, <3.8',
     install_requires=['Django~=1.11.6'],
     extras_require={

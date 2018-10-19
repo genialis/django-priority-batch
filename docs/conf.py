@@ -3,7 +3,9 @@ import os.path
 # Get package metadata from '__about__.py' file.
 about = {}
 base_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
-with open(os.path.join(base_dir, 'django_priority_batch', '__about__.py'), 'r') as fh:
+with open(
+    os.path.join(base_dir, 'src', 'django_priority_batch', '__about__.py'), 'r'
+) as fh:
     exec(fh.read(), about)
 if '__version__' not in about:
     raise AttributeError(
