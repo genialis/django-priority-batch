@@ -20,6 +20,15 @@ class PrioritizedBatcher:
         self.priorities = priorities or {}
         self.batch = None
 
+    def __enter__(self):
+        """Enter context manager."""
+        self.start()
+        return self
+
+    def __exit__(self, *args):
+        """Exit context manager."""
+        self.commit()
+
     @classmethod
     def global_instance(cls):
         """Return a per-thread global batcher instance."""

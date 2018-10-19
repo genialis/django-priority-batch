@@ -98,3 +98,15 @@ def test_priorities():
     batcher.commit()
 
     assert results == [2, 1, 3]
+
+
+def test_context_manager():
+    results = []
+
+    def simple_handler():
+        results.append(1)
+
+    with PrioritizedBatcher() as batcher:
+        batcher.add('test', simple_handler)
+
+    assert len(results) == 1
