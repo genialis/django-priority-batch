@@ -25,6 +25,9 @@ jobs:
     - stage: test
       env: TOX_ENV=py37
     - stage: test
+      env: TOX_ENV=py38
+      python: "3.8"
+    - stage: test
       env: TOX_ENV=linters
     - stage: test
       env: TOX_ENV=packaging

@@ -25,7 +25,7 @@ setuptools.setup(
     license=about['__license__'],
     packages=setuptools.find_packages('src'),
     package_dir={'': 'src'},
-    python_requires='>=3.6, <3.8',
+    python_requires='>=3.6, <3.9',
     install_requires=['Django~=2.0'],
     extras_require={
         'docs': ['Sphinx', 'sphinx_rtd_theme'],
@@ -52,6 +52,7 @@ setuptools.setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
     ],
     keywords='django transaction batching prioritization',
 )
