@@ -10,6 +10,15 @@ This project adheres to `Semantic Versioning <http://semver.org/>`_.
 2.2.0 2020-12-20
 ================
 
+Changed
+=======
+- Require Django 3.1
+
+
+================
+2.2.0 2020-12-20
+================
+
 Added
 ------
 - Add support for Python 3.9
