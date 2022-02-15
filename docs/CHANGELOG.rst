@@ -13,6 +13,7 @@ Unreleased
 Changed
 =======
 - **BACKWARD INCOMPATIBLE:** Drop support for Django 3.0 and 3.1
+- Add support for Python 3.10
 
 
 ================

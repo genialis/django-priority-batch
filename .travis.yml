@@ -31,6 +31,9 @@ jobs:
       env: TOX_ENV=py39
       python: "3.9"
     - stage: test
+      env: TOX_ENV=py310
+      python: "3.10"
+    - stage: test
       env: TOX_ENV=linters
     - stage: test
       env: TOX_ENV=packaging
