@@ -37,7 +37,7 @@ setuptools.setup(
             'check-manifest',
             'readme_renderer',
             'setuptools_scm',
-            'setuptools>=56.0.0',
+            'setuptools>=59.6.0',
             'pytest',
             'pytest-django',
         ],
