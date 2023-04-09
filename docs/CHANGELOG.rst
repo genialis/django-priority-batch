@@ -13,7 +13,7 @@ Unreleased
 Changed
 =======
 - **BACKWARD INCOMPATIBLE:** Require ``Django 4.2``
-
+- Add support for ``Python 3.11``
 
 ================
 4.0.0 2022-02-16
