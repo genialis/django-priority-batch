@@ -27,7 +27,7 @@ setuptools.setup(
     packages=setuptools.find_packages('src'),
     package_dir={'': 'src'},
     python_requires='>=3.6, <3.11',
-    install_requires=['Django~=3.2'],
+    install_requires=['Django~=4.2'],
     extras_require={
         'docs': ['Sphinx', 'sphinx_rtd_theme'],
         'package': ['twine', 'wheel'],
