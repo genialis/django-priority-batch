@@ -6,6 +6,18 @@ All notable changes to this project are documented in this file.
 This project adheres to `Semantic Versioning <http://semver.org/>`_.
 
 
+==================
+5.0.0 - 2023-04-09
+==================
+
+Changed
+=======
+- **BACKWARD INCOMPATIBLE:** Require ``Django 4.2``
+- Add support for ``Python 3.11``
+- Drop support for ``Python 3.6`` and ``Python 3.7``
+- Bump ``setuptools`` version
+
+
 ================
 4.0.0 2022-02-16
 ================
