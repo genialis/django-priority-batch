@@ -35,7 +35,6 @@ class PrioritizedBatcher:
         try:
             return GLOBAL_BATCHER.instance
         except AttributeError:
-
             instance = PrioritizedBatcher(
                 **getattr(settings, 'PRIORITIZED_BATCHER', {})
             )
