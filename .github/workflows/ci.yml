@@ -17,12 +17,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tox-env: [py36, py37, py38, py39, py310, py311, linters, packaging, migrations]
+        tox-env: [py38, py39, py310, py311, linters, packaging, migrations]
         include:
-          - tox-env: py36
-            python-version: 3.6
-          - tox-env: py37
-            python-version: 3.7
           - tox-env: py38
             python-version: 3.8
           - tox-env: py39
@@ -52,7 +48,7 @@ jobs:
           tox -e ${{ matrix.tox-env }}
           --recreate
       - name: Upload coverage to Codecov
-        if: matrix.tox-env == 'py37' || matrix.tox-env == 'py38' || matrix.tox-env == 'py39' || matrix.tox-env == 'py310' || matrix.tox-env == 'py311'
+        if: matrix.tox-env == 'py38' || matrix.tox-env == 'py39' || matrix.tox-env == 'py310' || matrix.tox-env == 'py311'
         uses: codecov/codecov-action@v1
         with:
           file: .coverage
